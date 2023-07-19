@@ -13,6 +13,10 @@ public class TareaServicio {
 
     private List<Tarea> listaDeTareas = new ArrayList<Tarea>();
 
+    public List<Tarea> getListaDeTareas() {
+        return listaDeTareas;
+    }
+
     private TareaServicio(){
         
     }
@@ -78,9 +82,9 @@ public class TareaServicio {
         return tiempoTotal;
     }
 
-    public Tarea buscarTarea(int index) {        
+    public Tarea buscarTarea(int id) {        
         for (Tarea tarea : listaDeTareas) {
-            if (tarea.getIdTarea() == index){
+            if (tarea.getIdTarea() == id){
                 return tarea;
             }
         }
