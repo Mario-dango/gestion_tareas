@@ -145,9 +145,11 @@ public class MenuGeneralServicioImpl implements MenuServicio{
     //  Ver Tareas
     private void opcion3() {
         System.out.println("Se seleccionó la opción 3");
-        for (Tarea tareaImpresa : tareaServicio.getListaDeTareas()) {
-            imprimirTarea(tareaImpresa);
-        }
+        tareaServicio.verTareas();
+        /*for (Tarea tareaImpresa : tareaServicio.getListaDeTareas()) {
+
+            //imprimirTarea(tareaImpresa);
+        }*/
     }
     
     private void opcion4() {

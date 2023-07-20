@@ -43,10 +43,46 @@ public class TareaServicio {
         return false;   //  No se encontró la tarea
     }
 
+    public boolean isFinished(Tarea tarea){
+        return tarea.getTiempoFinal() != null;
+    }
+
     public List<Tarea> verTareas(){
 
-        return null;
+       /* Ver tareas: Los usuarios deben poder ver una lista de todas las tareas, tanto completadas como pendientes. 
+        Para cada tarea completada, la aplicación debe mostrar la descripción, la fecha de inicio y fin, y la 
+        duración de la tarea .
+        
+        Para las tareas pendientes, la aplicación debe mostrar la descripción y la fecha de 
+        inicio, y cuántos días quedan para el vencimiento.*/
+
+        for(Tarea tarea : listaDeTareas){
+            if(isFinished(tarea)){
+                System.out.println(tarea.getDescripcionTarea());
+                System.out.println(tarea.getTiempoInicio());   
+                System.out.println(tarea.getTiempoFinal());  
+                System.out.println(tarea.getDuracionReal());                                          
+            } else {
+                System.out.println(tarea.getDescripcionTarea());
+                System.out.println(tarea.getTiempoInicio());
+                System.out.println(tarea.getDuracionHipotetica());  
+            }
+        }
+        waitForSeconds(2000);
+        
+        return listaDeTareas;
     }
+
+    public void waitForSeconds(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            System.out.println(
+                    "El programa ha fallado al detener la ejecución para que el usuario visualice la opción seleccionada.");
+            e.printStackTrace();
+        }
+    }
+
 
     public boolean eliminarTarea(int id) { 
         Tarea tareaParaEliminar = buscarTarea(id);
