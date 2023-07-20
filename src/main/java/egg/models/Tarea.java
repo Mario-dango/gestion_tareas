@@ -11,7 +11,7 @@ vencimiento (ingresada por el usuario como LocalDate), finalización, una descri
 public class Tarea {
     
     //  Atributo de la clase
-    private static int contadorTareas = 0;
+    private static int ultimoIdTarea = 0;
     //  Atributos de la instancia
     private int idTarea;
     private LocalDateTime tiempoInicio = null;
@@ -21,8 +21,8 @@ public class Tarea {
     
     //  Constructor con id incremental
     public Tarea(LocalDateTime tiempoVencimiento, String descripcionTarea) {
-        contadorTareas++;
-        this.idTarea = contadorTareas;
+        ultimoIdTarea++;
+        this.idTarea = ultimoIdTarea;
         this.tiempoInicio = LocalDateTime.now();
         this.tiempoFinal = null;
         this.tiempoVencimiento = tiempoVencimiento;
@@ -49,12 +49,12 @@ public class Tarea {
     }
 
     ///////////////////// SECCIÓN DE GETTERS Y SETTERS ////////////////////////
-    public static int getContadorTareas() {
-        return contadorTareas;
+    public static int getultimoIdTarea() {
+        return ultimoIdTarea;
     }
 
-    public static void setContadorTareas(int contadorTareas) {
-        Tarea.contadorTareas = contadorTareas;
+    public static void setultimoIdTarea(int ultimoIdTarea) {
+        Tarea.ultimoIdTarea = ultimoIdTarea;
     }
 
     public int getIdTarea() {
