@@ -29,11 +29,13 @@ public class TareaServicio {
         return instance;
     }
 
+    // Opción 1
     public void crearTarea(LocalDateTime vencimiento, String descripcion){
         Tarea nuevaTarea = new Tarea(vencimiento, descripcion);
         listaDeTareas.add(nuevaTarea);
     }
 
+    // Opción 2
     public boolean finalizarTarea(int identificadorDeTarea){
         Tarea tareaParaFinalizar = buscarTarea(identificadorDeTarea);
         if (tareaParaFinalizar != null){
@@ -43,11 +45,13 @@ public class TareaServicio {
         return false;   //  No se encontró la tarea
     }
 
+    // Opción 3
     public List<Tarea> verTareas(){
 
         return null;
     }
 
+    // Opción 4
     public boolean eliminarTarea(int id) { 
         Tarea tareaParaEliminar = buscarTarea(id);
         if (tareaParaEliminar != null){
@@ -57,6 +61,7 @@ public class TareaServicio {
         return false;   //  No se encontró la tarea
     }
 
+    // Opción 5
     public boolean editarTarea(String nuevaDescripcion, int id) {
         Tarea tareaParaEditar = buscarTarea(id);
         if (tareaParaEditar != null){
@@ -66,11 +71,12 @@ public class TareaServicio {
         return false;
     }
 
+    // Opción 6
     public String tiempoTotalDeTrabajo() {
         Duration tiempoDiferencia = Duration.between(LocalTime.of(0, 0, 0),LocalTime.of(0, 0, 0));;
         for (Tarea tarea : listaDeTareas) {
             if (tarea.getTiempoFinal() != null){
-                tiempoDiferencia.plus(tarea.getDuracionReal());
+                tiempoDiferencia = tiempoDiferencia.plus(tarea.getDuracionReal());
             } 
         }
         String tiempoTotal = (
@@ -82,6 +88,7 @@ public class TareaServicio {
         return tiempoTotal;
     }
 
+    // Opción 7
     public Tarea buscarTarea(int id) {        
         for (Tarea tarea : listaDeTareas) {
             if (tarea.getIdTarea() == id){
@@ -91,6 +98,7 @@ public class TareaServicio {
         return null;
     }
     
+    // Opción 7
     public Tarea buscarTarea(String descripString) {        
         for (Tarea tarea : listaDeTareas) {
             if (tarea.getDescripcionTarea().equals(descripString)){
@@ -100,6 +108,7 @@ public class TareaServicio {
         return null;
     }
 
+    // Opción 8
     public List<Tarea> ordenarTarea(int tipoDeOrden) {
         switch (tipoDeOrden) {
             case 1:             //  Ordenar por ID

@@ -97,7 +97,7 @@ public class MenuGeneralServicioImpl implements MenuServicio{
         }
     }
 
-    //  Crear tarea
+    //  Crear tarea OK
     private void opcion1(){        
         System.out.println("Se seleccionó la opción 1");
 
@@ -113,7 +113,7 @@ public class MenuGeneralServicioImpl implements MenuServicio{
         tareaServicio.crearTarea(fechaVencimiento, descripcionString);
     }
 
-    //  Finalizar Tarea
+    //  Finalizar Tarea OK
     private void opcion2(){
         System.out.println("Se seleccionó la opción 2");
         listaOpciones.removeAll(listaOpciones);       
@@ -137,13 +137,9 @@ public class MenuGeneralServicioImpl implements MenuServicio{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // Iterator<String> it = listaOpciones.iterator();
-        // while(it.hasNext())
-        //     System.out.println(it.next());
     }
     
-    //  Ver Tareas
+    //  Ver Tareas (DUDOSO)
     private void opcion3() {
         System.out.println("Se seleccionó la opción 3");
         for (Tarea tareaImpresa : tareaServicio.getListaDeTareas()) {
@@ -151,6 +147,7 @@ public class MenuGeneralServicioImpl implements MenuServicio{
         }
     }
     
+    //  Eliminar Tarea OK
     private void opcion4() {
         System.out.println("Se seleccionó la opción 4");
         listaOpciones.removeAll(listaOpciones);    
@@ -168,18 +165,41 @@ public class MenuGeneralServicioImpl implements MenuServicio{
         }
     }
     
-    private void opcion5() {
+    //  Editar Descripcion Tarea OK
+    private void opcion5() {        
+        System.out.println("Se seleccionó la opción 5");
+        listaOpciones.removeAll(listaOpciones);    
+        for (Tarea tarea : tareaServicio.getListaDeTareas()) {
+            listaOpciones.add(Integer.toString(tarea.getIdTarea()));
+        }
+        formatearOpciones(listaOpciones);
+        listaOpciones.removeAll(listaOpciones);  
         
+        int opcion = myScannerMenuGeneral.nextInt();
+        myScannerMenuGeneral.nextLine();
+        System.out.println("Ingrese la nueva descripcion de la tarea: ");
+        String nuevaDescripcion = myScannerMenuGeneral.nextLine();
+        if (tareaServicio.editarTarea(nuevaDescripcion, opcion)){
+            System.out.println("Se editó la tarea exitosamente.");
+        } else {
+            System.out.println("Hubo un problema al editar la Tarea.");
+        }
     }
     
+    //  Tiempo Total de Trabajo 
     private void opcion6() {
-        
+        System.out.println("Se seleccionó la opción 6");
+        String horasTrabajadas = tareaServicio.tiempoTotalDeTrabajo();
+        System.out.println("El tiempo total trabajado es: ");
+        System.out.println(horasTrabajadas);
     }
     
+    //  Buscar Tarea
     private void opcion7() {
         
     }
     
+    //  Ordenar Tareas por ....
     private void opcion8() {
         
     }
