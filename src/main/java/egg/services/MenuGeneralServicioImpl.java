@@ -116,6 +116,7 @@ public class MenuGeneralServicioImpl implements MenuServicio{
     //  Finalizar Tarea
     private void opcion2(){
         System.out.println("Se seleccionó la opción 2");
+        listaOpciones.removeAll(listaOpciones);       
         for (Tarea tarea : tareaServicio.getListaDeTareas()) {
             listaOpciones.add(Integer.toString(tarea.getIdTarea()));
         }
@@ -157,7 +158,14 @@ public class MenuGeneralServicioImpl implements MenuServicio{
             listaOpciones.add(Integer.toString(tarea.getIdTarea()));
         }
         formatearOpciones(listaOpciones);
-        listaOpciones.removeAll(listaOpciones);        
+        listaOpciones.removeAll(listaOpciones);  
+        
+        int opcion = myScannerMenuGeneral.nextInt();
+        if (tareaServicio.eliminarTarea(opcion)){
+            System.out.println("Se eliminó la tarea exitosamente.");
+        } else {
+            System.out.println("Hubo un problema al eleiminar la Tarea.");
+        }
     }
     
     private void opcion5() {
@@ -179,7 +187,7 @@ public class MenuGeneralServicioImpl implements MenuServicio{
     private void formatearOpciones(List<String> opcioneStrings){
         System.out.println("Seleccione la Tarea correspondiente");
         for (int i = 0; i < opcioneStrings.size(); i++) {
-            System.out.print("[" + (i+1) + "] ");
+            System.out.print("[" + (opcioneStrings.get(i)) + "] ");
             System.out.println("Tarea con ID: " + opcioneStrings.get(i));
         }
     }
